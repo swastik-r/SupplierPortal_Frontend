@@ -1,0 +1,22 @@
+.pageHeader {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.pageHeader h2 {
+   font-size: 1.5rem;
+   font-weight: 600;
+   margin: 0;
+   flex: 1;
+   text-align: center;
+}
+
+.home-button {
+   color: blue;
+   background-color: white;
+   border: 1px solid blue;
+   border-radius: 50%;
+   padding: 0.6rem 0.7rem;
+}
