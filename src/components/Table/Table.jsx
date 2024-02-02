@@ -4,6 +4,7 @@ import "./Table.css";
 export default function Table({
    data,
    headers,
+   enableCheckboxes,
    handleRowSelect,
    selectedRows,
    selectAll,
@@ -19,11 +20,13 @@ export default function Table({
             <thead>
                <tr>
                   <th>
-                     <input
-                        type="checkbox"
-                        checked={selectAll}
-                        onChange={handleSelectAll}
-                     />
+                     {enableCheckboxes && (
+                        <input
+                           type="checkbox"
+                           checked={selectAll}
+                           onChange={handleSelectAll}
+                        />
+                     )}
                   </th>
                   {headers.map((header, index) => (
                      <th key={index}>{Object.values(header)[0]}</th>
@@ -34,11 +37,13 @@ export default function Table({
                {data.map((row, rowIndex) => (
                   <tr key={rowIndex}>
                      <td>
-                        <input
-                           type="checkbox"
-                           checked={selectedRows.includes(row.itemId)}
-                           onChange={() => handleRowSelect(row.itemId)}
-                        />
+                        {enableCheckboxes && (
+                           <input
+                              type="checkbox"
+                              checked={selectedRows.includes(row.itemId)}
+                              onChange={() => handleRowSelect(row.itemId)}
+                           />
+                        )}
                      </td>
                      {headers.map((header, colIndex) => (
                         <td key={colIndex}>{row[Object.keys(header)[0]]}</td>

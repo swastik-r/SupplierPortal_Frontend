@@ -1,0 +1,71 @@
+.page {
+   flex: 1;
+   overflow: auto;
+   padding: 1rem 5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.disabled {
+   pointer-events: none;
+   opacity: 0.4;
+}
+
+.misc-div {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: end;
+   align-items: center;
+   padding: 0.7rem 0;
+}
+
+.misc-buttons-div {
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: start;
+}
+
+.misc-button {
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.misc-span {
+   font-size: 0.8rem;
+   font-weight: 600;
+   color: darkred;
+}
+
+.table-div {
+   width: 100%;
+}
+
+.table-buttons-div {
+   width: 25%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   height: 3rem;
+}
+
+.table-button {
+   border: none;
+   border-radius: 15px;
+   cursor: pointer;
+   font-size: small;
+}
+
+.misc-button,
+.table-button {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
