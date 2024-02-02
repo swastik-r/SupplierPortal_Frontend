@@ -1,0 +1,29 @@
+.edit-body {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.edit-frame {
+   width: 70%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   background-color: white;
+}
+
+.edit-detail {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}

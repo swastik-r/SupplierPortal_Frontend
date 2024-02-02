@@ -19,3 +19,18 @@ html {
    flex-direction: column;
    height: 100vh;
 }
+
+.page {
+   flex: 1;
+   overflow: auto;
+   padding: 1rem 5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.disabled {
+   pointer-events: none;
+   opacity: 0.7;
+}

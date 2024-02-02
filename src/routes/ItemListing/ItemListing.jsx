@@ -1,5 +1,6 @@
 import "./ItemListing.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaFileExport, FaFilter, FaSort } from "react-icons/fa";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -62,7 +63,7 @@ export default function ItemListing() {
          removeItemFlag: "No",
       },
       {
-         itemId: "001",
+         itemId: "007",
          itemName: "Product A",
          sku: "SKU001",
          price: "₹ 19.99",
@@ -71,7 +72,7 @@ export default function ItemListing() {
          removeItemFlag: "No",
       },
       {
-         itemId: "001",
+         itemId: "008",
          itemName: "Product A",
          sku: "SKU001",
          price: "₹ 19.99",
@@ -91,13 +92,11 @@ export default function ItemListing() {
    // Data and functions for Item Listing Table selections
    const [selectAll, setSelectAll] = useState(false);
    const [selectedRows, setSelectedRows] = useState([]);
-
    function handleSelectAll() {
       setSelectAll(!selectAll);
       setSelectedRows(selectAll ? [] : data.map((row) => row.itemId));
       console.log(selectAll);
    }
-
    function handleRowSelect(itemId) {
       const updatedSelectedRows = selectedRows.includes(itemId)
          ? selectedRows.filter((id) => id !== itemId)
@@ -106,16 +105,16 @@ export default function ItemListing() {
       console.log(updatedSelectedRows);
    }
 
-   // A useEffect hook to uncheck the selectAll checkbox if selectedRows is empty
+   // A useEffect hook to uncheck the selectAll checkbox if selectedRows's length is data's length
    useEffect(() => {
-      if (selectedRows.length === 0) {
-         setSelectAll(false);
-      }
-   }, [selectedRows]);
+      setSelectAll(selectedRows.length === data.length);
+   }, [selectedRows, data.length]);
+
+   const navigate = useNavigate();
 
    return (
-      <div className="page">
-         <PageHeader pageTitle="Item Listing" />
+      <>
+         <PageHeader pageTitle="Page Header" />
          <SearchBar />
 
          <div className="misc-div">
@@ -124,12 +123,9 @@ export default function ItemListing() {
                   <button className="misc-button">Upload File</button>
                   <span className="misc-span">File Format: .csv / .xls</span>
                </div>
-
-               <button className="misc-button">Populate Items</button>
                <button className="misc-button">Download Template</button>
             </div>
          </div>
-
          <div className="table-div">
             <div className="misc-buttons-div">
                <div className="table-buttons-div">
@@ -162,11 +158,15 @@ export default function ItemListing() {
                <button
                   disabled={selectedRows.length === 0}
                   className={`${selectedRows.length === 0 ? "disabled" : ""}`}
+                  onClick={() => {
+                     console.log("Edit the selected items");
+                     navigate("/edit", { state: { selectedRows, data } });
+                  }}
                >
                   Edit the Selected Items
                </button>
             </div>
          </div>
-      </div>
+      </>
    );
 }
